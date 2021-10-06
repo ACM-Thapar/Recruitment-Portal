@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Kriti-bit/Recruitment-Portal/issues"
   },
-  "homepage": "https://github.com/Kriti-bit/Recruitment-Portal#readme"
+  "homepage": "https://github.com/Kriti-bit/Recruitment-Portal#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.9",
+    "validator": "^13.6.0"
+  }
 }
