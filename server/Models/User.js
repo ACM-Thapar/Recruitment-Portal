@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const MemberSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Name field is empty'],
@@ -69,8 +69,8 @@ const MemberSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-
-  personalEmail: {
+  //Personal Email id
+  email: {
     type: String,
     required: true,
     unique: true,
@@ -93,8 +93,15 @@ const MemberSchema = new mongoose.Schema({
       }
     },
   },
+
+  password: {
+    type: String,
+    required: [true, 'Password field is empty'],
+    trim: true,
+  },
+
 });
 
-MemberSchema.set('timestamps', true);
+UserSchema.set('timestamps', true);
 
-module.exports = Member = mongoose.model('Member', MemberSchema);
+module.exports = User = mongoose.model('User', UserSchema);
