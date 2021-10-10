@@ -3,15 +3,15 @@ import Question from '../component/Question'
 import ResponseContext from '../component/ResponseContext'
 
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+// import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 export default function QuizPortal() {
   const [ response, setResponse ] = useState([])
 
-  // Assuming we have an array of { quesId, question} from server
+  // Assuming we have an array of { quesId, question } from server
   const quesArr = [
     {
       id:1,
@@ -39,7 +39,7 @@ export default function QuizPortal() {
   
     return (
     <div>
-      <ResponseContext.Provider value={{ response,setResponse }}>
+      <ResponseContext.Provider value={{ response, setResponse }}>
       
         <Box sx={{ flexGrow: 1 , mb: 3}}>
           <Grid 
@@ -48,7 +48,7 @@ export default function QuizPortal() {
           >
             { quesArr.map((ques) => {
             return (
-              <Grid item xs={8} sx={{ my:1}}>
+              <Grid item xs={8} key={ques.id} sx={{ my:1}}>
                 {/* <Item> */}
                   <Question quesId={ques.id} question={ques.text} choices = {ques.choices} />
                 {/* </Item> */}
@@ -56,8 +56,8 @@ export default function QuizPortal() {
             )
           }) }
           </Grid>
-          <Button variant="contained" onClick={console.log(response)}>Submit</Button>
-          <Button variant="outlined" onClick={console.log(response)}>Back</Button>
+          <Button variant="contained" onClick={() => console.log(response)}>Submit</Button>
+          <Button variant="outlined" onClick={() => console.log(response)}>Back</Button>
         </Box>
       </ ResponseContext.Provider>
     </div>
