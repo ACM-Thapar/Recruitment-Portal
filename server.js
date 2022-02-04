@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const connectDB = require("./server/config/db");
 const cors = require("cors");
-const questionRoutes=require('./server/routes/questionRoutes');
-const answerRoutes=require('./server/routes/answerRoutes');
+const questionRoutes=require('./server/routes/question');
+const answerRoutes=require('./server/routes/answer');
 
 const PORT = process.env.PORT || 5000;
 

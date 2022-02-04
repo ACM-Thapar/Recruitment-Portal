@@ -1,26 +1,24 @@
-const express = require("express");
-const router = express.Router();
 const Question = require("../Models/Question");
 
-router.get("/", async (req, res) => {
+exports.question_details = async (req, res) => {
   try {
     const questions = await Question.find();
     return res.status(200).json(questions);
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
-});
+};
 
-router.get("/:id", async (req, res) => {
+exports.question_details_specific = async (req, res) => {
   try {
     const questions = await Question.findById(req.params.id);
     return res.status(200).json(questions);
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
-});
+};
 
-router.post("/create", async (req, res) => {
+exports.question_create = async (req, res) => {
   try {
     const { Qid, Description, Options, Solution } = req.body;
     const question = await Question.create({
@@ -33,9 +31,9 @@ router.post("/create", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
-});
+};
 
-router.put("/:id", async (req, res) => {
+exports.question_update = async (req, res) => {
   try {
     const { Qid, Description, Options, Solution } = req.body;
     const question = await Question.findById(req.params.id);
@@ -58,15 +56,13 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
-});
+};
 
-router.delete("/:id", async (req, res) => {
+exports.question_delete = async (req, res) => {
   try {
     const questions = await Question.findByIdAndDelete(req.params.id);
     return res.status(200).json(questions);
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
-});
-
-module.exports = router;
+};
