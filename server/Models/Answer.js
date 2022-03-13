@@ -1,16 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const AnswerSchema = new mongoose.Schema({
-
-  Ques: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Quesion',
-  },
-
-  Answer: {
-    type: String,
-    required: [true, 'Answer is required'],
-  },
+  Answers: [
+    {
+      QuestionId: {
+        type: Number,
+        required:true
+      },
+      AnswerId: {
+        type: Number
+      }
+    },
+  ],
 });
 
-module.exports = Answer = mongoose.model('Answer', AnswerSchem);
+module.exports = Answers = mongoose.model("Answer", AnswerSchema);
